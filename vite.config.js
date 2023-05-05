@@ -29,7 +29,10 @@ const config = {
 			"$svg": path.resolve("./src/svg"),
 			"$utils": path.resolve("./src/utils")
 		}
-	}
+	},
+	optimizeDeps: {
+		exclude: ['layercake', "lucide-svelte"]
+	  }
 };
 
 export default config;
