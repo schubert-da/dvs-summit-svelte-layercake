@@ -3,26 +3,17 @@
 </script>
 
 <header>
-	<div class="wordmark">
-		<a href="https://pudding.cool" aria-label="The Pudding">{@html wordmark}</a>
-	</div>
+	<img src="assets/WGS-summit-logo-transparency.png" alt="WGS Summit Logo" />
 </header>
 
 <style>
-	.wordmark {
-		max-width: 10em;
-		margin: 0 auto;
-		padding: 1em 0;
+	header {
+		padding: 20px 20px;
+		box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 	}
 
-	.wordmark a {
-		border: none;
-		display: block;
-		color: var(--color-fg);
-	}
-
-	.wordmark a:hover {
-		background-color: transparent;
+	header img {
+		height: 50px;
 	}
 
 	:global(.wordmark svg path) {
