@@ -12,7 +12,7 @@
 		return $yRange[0] - $yGet(d);
 	};
 
-	export let fill = "#ccc";
+	export let fill = "#b6a391";
 	export let stroke = "#000";
 	export let strokeWidth = 0;
 </script>
