@@ -1,8 +1,6 @@
 <script>
     import PovertyBarChart from "./charts/poverty-bar-chart.svelte";
-    import PovertyBarChart2 from "./charts/poverty-bar-chart2.svelte";
     import PovertyProjectionLineChart from "./charts/poverty-projection-line-chart.svelte";
-	import PovertyProjectionLineChart2 from "./charts/poverty-projection-line-chart2.svelte";
 </script>
 
 <div class="section poverty-section">
@@ -27,8 +25,7 @@
 
     <br />
 
-    <!-- <PovertyBarChart /> -->
-    <PovertyBarChart2 />
+    <PovertyBarChart />
 
     <p>
         The deceleration indicates that the world is not on track to achieve the
@@ -52,8 +49,7 @@
         Ukraine. Around 75-95 million people additional people will will be
         living in extreme poverty as compared to pre-pandemic projections.
         <br />
-        <!-- <PovertyProjectionLineChart /> -->
-        <PovertyProjectionLineChart2 />
+        <PovertyProjectionLineChart />
         <br />
         In 2020, for the first time in two decades, the world's share of workers
         living with their families below the international poverty line increased,
