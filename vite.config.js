@@ -31,7 +31,7 @@ const config = {
 		}
 	},
 	optimizeDeps: {
-		exclude: ['layercake', "lucide-svelte"]
+		exclude: ['layercake', "lucide-svelte", "d3-time-format", "d3-format"]
 	  }
 };
 
