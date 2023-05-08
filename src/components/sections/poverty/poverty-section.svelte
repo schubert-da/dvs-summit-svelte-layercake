@@ -2,6 +2,7 @@
     import PovertyBarChart from "./charts/poverty-bar-chart.svelte";
     import PovertyBarChart2 from "./charts/poverty-bar-chart2.svelte";
     import PovertyProjectionLineChart from "./charts/poverty-projection-line-chart.svelte";
+	import PovertyProjectionLineChart2 from "./charts/poverty-projection-line-chart2.svelte";
 </script>
 
 <div class="section poverty-section">
@@ -13,7 +14,7 @@
         last 10 years, there have been both positive and negative changes in
         poverty levels around the world.
     </p>
-
+    <br>
     <p>
         On a global scale, the number of people living in extreme poverty
         (defined as living on less than $1.90 per day) has decreased. According
@@ -51,7 +52,8 @@
         Ukraine. Around 75-95 million people additional people will will be
         living in extreme poverty as compared to pre-pandemic projections.
         <br />
-        <PovertyProjectionLineChart />
+        <!-- <PovertyProjectionLineChart /> -->
+        <PovertyProjectionLineChart2 />
         <br />
         In 2020, for the first time in two decades, the world's share of workers
         living with their families below the international poverty line increased,
