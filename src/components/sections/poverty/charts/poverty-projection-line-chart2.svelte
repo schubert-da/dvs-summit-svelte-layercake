@@ -2,6 +2,7 @@
 	import { LayerCake, Svg, Html, groupLonger, flatten } from "layercake";
 
 	import { scaleOrdinal } from "d3-scale";
+  import { timeParse, timeFormat } from 'd3-time-format';
 
 	import MultiLine from "$components/layercake/MultiLine.svelte";
 	import AxisX from "$components/layercake/AxisX.svelte";
@@ -20,14 +21,27 @@
 		valueTo: yKey
 	});
 
+  // const xKeyCast = timeParse('%Y');
+  // const formatTickX = timeFormat('%Y');
+
+  data.forEach(d => {
+    // d[xKey] = typeof d[xKey] === 'string'
+    //   ? xKeyCast(d[xKey])
+    //   : d[xKey];
+
+    seriesNames.forEach(name => {
+      d[name] = +d[name];
+    });
+  });
+
 	const tempSize = 520;
 	const tempTicks = Array.from({ length: 7 }, (_, i) =>
 		Math.round(0 + (tempSize * i) / 6)
 	);
   
-	const xScale = scaleOrdinal()
-		.domain(data.map((d) => d["Year"]))
-		.range(tempTicks);
+	// const xScale = scaleOrdinal()
+	// 	.domain(data.map((d) => d["Year"]))
+	// 	.range(tempTicks);
 
   const annotations = [
 		{
@@ -64,8 +78,6 @@
 		y={yKey}
 		yNice={true}
 		z={zKey}
-		{xScale}
-		xRange={tempTicks}
 		zScale={scaleOrdinal()}
 		zRange={["#b6a391", "#444", "#999"]}
 		yDomain={[0, null]}
@@ -78,14 +90,7 @@
 			2030 target of eradicating poverty, <b>COVID-19 set progress back by as many
 			as 4 years</b>.
 		</p>
-
 		<Svg>
-			<AxisX
-				ticks={data.map((d) => d["Year"])}
-				yTick={28}
-				snapTicks={true}
-				gridlines={false}
-			/>
 			<AxisY
 				textAnchor={"end"}
 				dxTick={-4}
@@ -95,10 +100,16 @@
 			/>
 			<MultiLine />
       <line class="divider-2019"
-        x1='65%'
-        x2='65%'
+        x1='62%'
+        x2='62%'
         y1='0'
         y2='295'></line>
+      <AxisX
+        ticks={data.map(d => d[xKey])}
+        yTick={28}
+        snapTicks={true}
+        gridlines={false}
+      />
 		</Svg>
 
     <Html>

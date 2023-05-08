@@ -4,11 +4,10 @@
  -->
  <script>
     import { getContext } from 'svelte';
-  
     const { data, xGet, yGet, zGet } = getContext('LayerCake');
   
     $: path = values => {
-      return 'M' + values.filter(d => d.value !== "")
+      return 'M' + values.filter(d => d.value !== 0 && d.value !=="" ) // filter skips drawing for points with undefined data values
         .map(d => {
           return $xGet(d) + ',' + $yGet(d);
         })
