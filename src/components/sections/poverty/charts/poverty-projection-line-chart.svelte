@@ -21,33 +21,17 @@
 		valueTo: yKey
 	});
 
-  // const xKeyCast = timeParse('%Y');
-  // const formatTickX = timeFormat('%Y');
-
   data.forEach(d => {
-    // d[xKey] = typeof d[xKey] === 'string'
-    //   ? xKeyCast(d[xKey])
-    //   : d[xKey];
-
     seriesNames.forEach(name => {
       d[name] = +d[name];
     });
   });
 
-	const tempSize = 520;
-	const tempTicks = Array.from({ length: 7 }, (_, i) =>
-		Math.round(0 + (tempSize * i) / 6)
-	);
-  
-	// const xScale = scaleOrdinal()
-	// 	.domain(data.map((d) => d["Year"]))
-	// 	.range(tempTicks);
-
   const annotations = [
 		{
 			text: "milllions of poor",
-			top: "-40px",
-			left: "-170px",
+			top: "-10%",
+			left: "-60px",
 			class: "poverty-annot annot",
 		},
 		{
@@ -64,7 +48,7 @@
 		},
 		{
 			text: "<span style='font-weight:400'>588</span> <br> Forecast before <br> COVID-19 ",
-			top: "100px",
+			top: "80px",
 			right: "-10px",
 			class: "before-covid-annot annot"
 		},
@@ -73,7 +57,7 @@
 
 <div class="chart-container">
 	<LayerCake
-		padding={{ top: 170, right: 10, bottom: 20, left: 25 }}
+		padding={{ top: 200, right: 10, bottom: 20, left: 25 }}
 		x={xKey}
 		y={yKey}
 		yNice={true}
@@ -99,17 +83,12 @@
 				gridlines={false}
 			/>
 			<MultiLine />
-      <line class="divider-2019"
-        x1='62%'
-        x2='62%'
-        y1='0'
-        y2='295'></line>
-      <AxisX
-        ticks={data.map(d => d[xKey])}
-        yTick={28}
-        snapTicks={true}
-        gridlines={false}
-      />
+			<AxisX
+				ticks={data.map(d => d[xKey])}
+				yTick={28}
+				snapTicks={true}
+				gridlines={false}
+			/>
 		</Svg>
 
     <Html>
@@ -128,7 +107,7 @@
 	.chart-container {
 		width: 80%;
 		height: 480px;
-    margin: 80px auto;
+    	margin: 80px auto;
 	}
 
 	.chart-container .title {
@@ -138,7 +117,8 @@
 	}
 
 	.chart-container .subtitle {
-		width: 48ch;
+		min-width: 300px;	
+		max-width: 48ch;
 		margin: 0;
 
 		letter-spacing: -0.04em;
@@ -148,13 +128,9 @@
 		font-family: Inter;
 		font-weight: 400;
 	}
-
-  .divider-2019{
-    stroke: #222;
-  }
   
 	.chart-container :global(.layercake-annotation.annot) {
-    text-align: right;
+    	text-align: right;
 		width: 20ch;
 		letter-spacing: -0.05em;
 		line-height: 16px;
@@ -163,9 +139,16 @@
 		font-family: Inter;
 		font-weight: 600;
 	}
+	.chart-container :global(.layercake-annotation.poverty-annot) {
+    	text-align: left;
+	}
 
 	.chart-container :global(.x-axis text) {
 		font-size: 18px;
+	}
+
+	.chart-container :global(.x-axis g.tick:nth-child(even) text) { /* Hide every second tick label*/
+		visibility: hidden !important;
 	}
 
 	.chart-container :global(.x-axis .tick-0 text),
@@ -186,8 +169,30 @@
 	.chart-container :global(.line-group path.line-2) {
 		stroke-dasharray: 7;
 	}
-	/*
-    .chart-container :global(.line-group path) {
-      stroke: #555;
-    } */
+
+	@media (max-width: 800px) {
+		.chart-container{
+			height: 480px;
+			width: 90%;
+		}
+
+		.chart-container .subtitle{
+			width: 30ch;
+			font-size: 16px;
+			line-height: 1.1;
+		}
+
+		.chart-container .title{
+			font-size: 22px;
+			line-height: 1.1;
+			letter-spacing: -1px;
+		}
+
+		
+		.chart-container :global(.layercake-annotation.annot) {
+			line-height: 14px;
+			font-size: 14px;
+		}
+	}
+	
 </style>

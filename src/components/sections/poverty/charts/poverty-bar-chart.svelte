@@ -9,10 +9,6 @@
 	import AxisY from "$components/layercake/AxisY.svelte";
 	import Annotations from "$components/layercake/Annotations.html.svelte";
 	import Arrows from '$components/layercake/Arrows.svelte';
-	// import ArrowheadMarker from './_components/ArrowheadMarker.svelte';
-
-	// This example loads csv data as json using @rollup/plugin-dsv
-	// import data from './_data/groups.csv';
 
 	const xKey = "year";
 	const yKey = "value";
@@ -40,7 +36,7 @@
 		},
 		{
 			text: "Percentage of total population living on less than $1.90 a day",
-			top: "-50px",
+			top: "-65px",
 			left: "-25px",
 			class: "poverty-ytitle"
 		}
@@ -60,7 +56,7 @@
 	</p>
 
 	<LayerCake
-		padding={{ top: 90, right: 0, bottom: 50, left: 20 }}
+		padding= {{ top: 90, right: 0, bottom: 50, left: 20 }}
 		x={xKey}
 		xScale={scaleBand().paddingInner([0.02]).round(true)}
 		xDomain={data.keys()}
@@ -86,7 +82,6 @@
 		
 	  <Svg>
 		<svelte:fragment slot="defs">
-		  <!-- <ArrowheadMarker/> -->
 		</svelte:fragment>
 		<Arrows {annotations}/>
 	  </Svg> 
@@ -114,7 +109,7 @@
 	}
 
 	.chart-container .subtitle{
-		width: 48ch;
+		max-width: 48ch;
 		margin: 0;
 
 		letter-spacing: -0.04em;
@@ -158,9 +153,39 @@
 		font-weight: 600;
 	}
 
-	@media (max-width: 720px) {
+	@media (max-width: 1400px) {
+		.chart-container :global(.x-axis .tick:nth-of-type(even):not(:last-of-type) text) {
+			visibility: hidden;
+		}
+
+		.chart-container .subtitle{
+			width: 48ch;
+			font-size: 18px;
+			line-height: 1.1;
+		}
+
+		.chart-container .title{
+			font-size: 22px;
+			line-height: 1.1;
+			letter-spacing: -1px;
+		}
+	}
+
+	@media (max-width: 800px) {
 		.chart-container :global(.x-axis .tick:not(:first-of-type):not(:last-of-type) text) {
 			visibility: hidden;
+		}
+
+		.chart-container .subtitle{
+			width: 30ch;
+			font-size: 16px;
+			line-height: 1.1;
+		}
+
+		.chart-container .title{
+			font-size: 22px;
+			line-height: 1.1;
+			letter-spacing: -1px;
 		}
 		
 		.chart-container :global(.layercake-annotation.poverty-annot) {
@@ -169,6 +194,11 @@
 			width: 28ch;
 			color: #555;
 			line-height: 1;
+		}
+
+		.chart-container :global(rect) {
+			stroke: #efefef;
+			stroke-width: 1;
 		}
 	}
 </style>

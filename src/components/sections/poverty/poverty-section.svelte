@@ -39,8 +39,6 @@
         sub-Saharan Africa the share of the working poor stood at 38%.
     </p>
 
-    <!-- <PovertyRegionLineChart /> -->
-
     <h2>The Effect of the Global Pandemic</h2>
     <p>
         More than 4 years of progress against poverty has been erased by
@@ -58,4 +56,3 @@
     </p>
 </div>
 
-<p />
