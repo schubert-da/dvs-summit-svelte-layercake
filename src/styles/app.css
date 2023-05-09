@@ -105,6 +105,7 @@ html {
 }
 
 body {
+	padding-bottom: 50px;
     background-color: #efefef;
     margin: 20px;
     font-family: 'Inter', sans-serif;
