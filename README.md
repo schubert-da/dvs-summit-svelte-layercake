@@ -1,3 +1,32 @@
+# World Summit Dataviz with Svelte + LayerCake
+
+The project was created with the [Pudding's svelte starter](https://github.com/the-pudding/svelte-starter/tree/main) repo. An outline of the work done on top of that includes:
+
+## World Poverty section 
+**`(src/components/sections/poverty)`** Component containing writeup along with the following two charts:
+
+- **`poverty-bar-chart.svelte`**: Global poverty trends bar chart along with annotations(+ arrows). Uses `Column.svelte` to create bars, `Annotations.html.svelte` and `Arrows.svelte` for annotations.
+- **`poverty-projection-line-chart.svelte`**: Pre-Covid 19 poverty projections vs actual line charts. Line chart done with  `MultiLine.svelte` template component and `Annotations.html.svelte` for annotations.
+<br><br>
+
+## LayerCake components 
+**`(src/components/layercake)`** A couple additions/changes to the reusable LayerCake components:
+
+- **`Annotations.html.svelte`**: From LayerCake components library. Used to create annotations as a separate html element in our LayerCake element.
+- **`Arrows.svelte`**: From LayerCake components library. Used to create arrows from the annotations.
+- **`Column.svelte`**: From LayerCake components library. Changes made to styling to fit in with our current design.
+- **`MultiLine.svelte`**: From LayerCake components library. Used to create chart with multiple lines for the poverty projection chart along with a few custom chart elements (eg. pre/post COVID divider line).
+    
+<br>
+
+### Note
+* _Original version of the project created for the World Data Visualisation Prize '23 with Svelte + Milton can be seen at this [link](https://schubert-da.github.io/dvs-world-summit/)_
+<br><br>
+---
+<br>
+The following is the README from the Puddings svelte starter repo.
+<br><br>
+
 # Svelte Starter
 
 This [starter template](https://github.com/the-pudding/svelte-starter) aims to quickly scaffold a [SvelteKit](https://kit.svelte.dev/) project, designed around data-driven, visual stories at [The Pudding](https://pudding.cool).

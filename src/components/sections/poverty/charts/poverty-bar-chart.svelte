@@ -13,6 +13,7 @@
 	const xKey = "year";
 	const yKey = "value";
 
+	// annotations config 
 	const annotations = [
 		{
 			text: "In 2019, projections showed 6% of the population living in extreme poverty in 2030, <b>missing the target of eradicating poverty</b>",
@@ -41,7 +42,8 @@
 			class: "poverty-ytitle"
 		}
 	];
-
+	
+	// convert to numbers
 	data.forEach((d) => {
 		d[yKey] = +d[yKey];
 	});
@@ -153,6 +155,7 @@
 		font-weight: 600;
 	}
 
+	/* Chart responsiveness for screens < 1400px wide */
 	@media (max-width: 1400px) {
 		.chart-container :global(.x-axis .tick:nth-of-type(even):not(:last-of-type) text) {
 			visibility: hidden;
@@ -171,6 +174,7 @@
 		}
 	}
 
+	/*Responsive styling for tablets and smaller*/
 	@media (max-width: 800px) {
 		.chart-container :global(.x-axis .tick:not(:first-of-type):not(:last-of-type) text) {
 			visibility: hidden;

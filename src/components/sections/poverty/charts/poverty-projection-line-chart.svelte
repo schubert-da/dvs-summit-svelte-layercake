@@ -2,7 +2,6 @@
 	import { LayerCake, Svg, Html, groupLonger, flatten } from "layercake";
 
 	import { scaleOrdinal } from "d3-scale";
-  import { timeParse, timeFormat } from 'd3-time-format';
 
 	import MultiLine from "$components/layercake/MultiLine.svelte";
 	import AxisX from "$components/layercake/AxisX.svelte";
@@ -21,13 +20,15 @@
 		valueTo: yKey
 	});
 
-  data.forEach(d => {
-    seriesNames.forEach(name => {
-      d[name] = +d[name];
-    });
-  });
+	// convert data to numerical values from strings
+	data.forEach(d => {
+		seriesNames.forEach(name => {
+			d[name] = +d[name];
+		});
+	});
 
-  const annotations = [
+	// annotations and title for y axis
+	const annotations = [
 		{
 			text: "milllions of poor",
 			top: "-10%",
@@ -74,6 +75,7 @@
 			2030 target of eradicating poverty, <b>COVID-19 set progress back by as many
 			as 4 years</b>.
 		</p>
+
 		<Svg>
 			<AxisY
 				textAnchor={"end"}
@@ -91,9 +93,9 @@
 			/>
 		</Svg>
 
-    <Html>
-      <Annotations {annotations} />
-    </Html>
+		<Html>
+			<Annotations {annotations} />
+		</Html>
 	</LayerCake>
 </div>
 
@@ -139,6 +141,7 @@
 		font-family: Inter;
 		font-weight: 600;
 	}
+
 	.chart-container :global(.layercake-annotation.poverty-annot) {
     	text-align: left;
 	}
@@ -170,6 +173,8 @@
 		stroke-dasharray: 7;
 	}
 
+
+	/* Styling for tablets and smaller */
 	@media (max-width: 800px) {
 		.chart-container{
 			height: 480px;
@@ -187,7 +192,6 @@
 			line-height: 1.1;
 			letter-spacing: -1px;
 		}
-
 		
 		.chart-container :global(.layercake-annotation.annot) {
 			line-height: 14px;
